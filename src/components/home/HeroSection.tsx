@@ -82,8 +82,7 @@ export function HeroSection() {
         </div>
       </div>
       
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-primary/50 to-transparent" />
+      {/* Clean bottom edge - removed blurred transition */}
       
       {/* Decorative gold corner accents */}
       <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-accent/10 to-transparent" />

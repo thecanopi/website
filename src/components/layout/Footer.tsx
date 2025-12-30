@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/logo-canopi.png";
 
 // X (Twitter) icon component
@@ -25,24 +25,25 @@ export function Footer() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-teal-darker/50 pointer-events-none" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-light/10 rounded-full blur-3xl pointer-events-none" />
-
+      
       <div className="container mx-auto px-4 py-10 md:py-12 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block group">
-              <img
-                src={logo}
-                alt="Canopi Strategy Partners"
-                className="h-14 md:h-16 max-w-[180px] md:max-w-[240px] object-contain object-left transition-all duration-300 group-hover:scale-105 brightness-0 invert drop-shadow-[0_0_12px_rgba(212,175,55,0.4)]"
+              <img 
+                src={logo} 
+                alt="Canopi Strategy Partners" 
+                className="h-14 md:h-16 max-w-[180px] md:max-w-[240px] object-contain object-left transition-all duration-300 group-hover:scale-105 brightness-0 invert drop-shadow-[0_0_12px_rgba(212,175,55,0.4)]" 
               />
             </Link>
             <p className="text-primary-foreground/80 max-w-md leading-relaxed text-sm">
-              Canopi partners with you to overcome challenges and unlock growth. Our experts bring your vision to life with precision, driving sustainable success and measurable results.
+              Canopi partners with you to overcome challenges and unlock growth. Our experts bring your vision to life
+              with precision for sustainable success and measurable results.
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/company/canopiai"
+                href="https://www.linkedin.com/company/canopi-strategy-partners"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-primary-foreground/10 rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
@@ -56,6 +57,14 @@ export function Footer() {
                 className="p-2 bg-primary-foreground/10 rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
               >
                 <XIcon className="h-4 w-4" />
+              </a>
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-primary-foreground/10 rounded-full hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
+              >
+                <Instagram className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -84,8 +93,8 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-accent mt-0.5" />
                 <div>
                   <p className="text-xs text-primary-foreground/70">Email</p>
-                  <a href="mailto:Anupama.S@thecanopi.ai" className="text-sm hover:text-accent transition-colors">
-                    Anupama.S@thecanopi.ai
+                  <a href="mailto:anupama.s@thecanopi.ai" className="text-sm hover:text-accent transition-colors">
+                    anupama.s@thecanopi.ai
                   </a>
                 </div>
               </div>
@@ -102,7 +111,7 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-accent mt-0.5" />
                 <div>
                   <p className="text-xs text-primary-foreground/70">Location</p>
-                  <p className="text-sm">INDIA</p>
+                  <p className="text-sm">Hyderabad,India</p>
                 </div>
               </div>
             </div>

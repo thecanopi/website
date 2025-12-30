@@ -210,8 +210,8 @@
   
   /* Value prop card with teal/gold accent */
   .value-card {
-    @apply flex items-start gap-4 p-6 rounded-xl transition-all duration-300;
-    @apply bg-card/80 backdrop-blur-sm border;
+    @apply flex flex-col items-start gap-3 p-6 rounded-xl transition-all duration-300;
+    @apply bg-card/80 backdrop-blur-sm border h-full;
   }
   
   .value-card:hover {

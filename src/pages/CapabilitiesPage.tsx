@@ -40,7 +40,7 @@ const capabilities = [
     ],
   },
   {
-    title: 'Digital, Data, and AI Strategy',
+    title: 'Digital, Data and AI Strategy',
     shortTitle: 'Digital & AI',
     icon: Brain,
     color: 'from-cyan-500 to-blue-600',
@@ -148,7 +148,7 @@ const FlipCard = ({ capability, index }: FlipCardProps) => {
   return (
     <div
       className="flip-card-container h-[340px] md:h-[380px] cursor-pointer group"
-      style={{
+      style={{ 
         animationDelay: `${index * 100}ms`,
         '--glow-color': capability.glowColor,
       } as React.CSSProperties}
@@ -163,7 +163,7 @@ const FlipCard = ({ capability, index }: FlipCardProps) => {
           <div className="absolute inset-0 rounded-3xl overflow-hidden">
             <div className="shimmer-effect" />
           </div>
-
+          
           {/* Animated mesh gradient background */}
           <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <div className="mesh-gradient" />
@@ -215,14 +215,14 @@ const FlipCard = ({ capability, index }: FlipCardProps) => {
         <div className={`flip-card-back rounded-3xl bg-card/95 backdrop-blur-xl border-2 ${capability.borderColor} p-6 flex flex-col overflow-hidden`}>
           {/* Animated gradient border effect */}
           <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${capability.color} opacity-5`} />
-
+          
           {/* Top accent bar with animation */}
           <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${capability.color} animated-gradient`} />
-
+          
           {/* Floating background shapes */}
           <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full ${capability.bgColor} blur-3xl opacity-50`} />
           <div className={`absolute -bottom-20 -left-20 w-32 h-32 rounded-full ${capability.bgColor} blur-3xl opacity-30`} />
-
+          
           {/* Title with icon */}
           <div className="flex items-center gap-4 mb-5 pt-2 relative z-10">
             <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${capability.color} flex items-center justify-center shadow-lg icon-spin`}>
@@ -273,12 +273,12 @@ export default function CapabilitiesPage() {
         <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
           {/* Animated gradient mesh background */}
           <div className="absolute inset-0 hero-mesh" />
-
+          
           {/* Floating orbs */}
           <div className="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-float-delayed" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/10 rounded-full blur-3xl animate-pulse-slow" />
-
+          
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(25)].map((_, i) => (
@@ -298,7 +298,7 @@ export default function CapabilitiesPage() {
 
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 grid-pattern opacity-10" />
-
+          
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
@@ -314,7 +314,7 @@ export default function CapabilitiesPage() {
               </RevealOnScroll>
               <RevealOnScroll delayMs={200}>
                 <p className="text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto leading-relaxed">
-                  A complete set of services to help organisations transform
+                  A complete set of services to help organisations transform 
                   and grow with purpose. Tap or hover to explore each capability.
                 </p>
               </RevealOnScroll>
@@ -331,7 +331,7 @@ export default function CapabilitiesPage() {
           <div className="absolute top-40 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 left-0 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/3 rounded-full blur-3xl" />
-
+          
           <div className="container mx-auto px-4 relative z-10">
             {/* Grid layout */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
@@ -403,11 +403,14 @@ export default function CapabilitiesPage() {
           height: 100%;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
+          /* iOS Safari fix for backface visibility */
+          transform-style: flat;
         }
         
         .flip-card-front {
           box-shadow: 0 25px 50px -12px var(--glow-color, rgba(0,0,0,0.25));
           transition: box-shadow 0.3s ease;
+          z-index: 2;
         }
         
         .flip-card-container:hover .flip-card-front,
@@ -418,6 +421,16 @@ export default function CapabilitiesPage() {
         .flip-card-back {
           transform: rotateY(180deg);
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+        
+        .flip-card-inner.flipped .flip-card-front {
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        .flip-card-inner.flipped .flip-card-back {
+          z-index: 2;
         }
         
         /* Shimmer effect */

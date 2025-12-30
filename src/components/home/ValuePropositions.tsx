@@ -17,13 +17,13 @@ const values = [
   },
   {
     icon: Users,
-    title: 'A team that equips your people — not one that replaces them ',
+    title: 'A team that equips your people — not replaces them',
   },
 ];
 
 export function ValuePropositions() {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-20 right-20 w-48 h-48 bg-accent/5 rounded-full blur-3xl animate-pulse-slow" />
       
@@ -35,11 +35,11 @@ export function ValuePropositions() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
             <RevealOnScroll key={index} delayMs={index * 100}>
-              <div className="value-card group">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className="value-card group h-full min-h-[120px] flex flex-col items-start">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-3">
                   <value.icon className="h-6 w-6 text-gold" />
                 </div>
-                <p className="font-medium text-primary">{value.title}</p>
+                <p className="font-medium text-primary flex-1">{value.title}</p>
               </div>
             </RevealOnScroll>
           ))}

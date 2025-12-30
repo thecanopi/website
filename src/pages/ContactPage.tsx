@@ -217,8 +217,8 @@ export default function ContactPage() {
                 <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Mail className="h-5 w-5 text-gold" />
                 </div>
-                <a href="mailto:Anupama.S@thecanopi.ai" className="text-primary hover:text-accent transition-colors">
-                  Anupama.S@thecanopi.ai
+                <a href="mailto:anupama.s@thecanopi.ai" className="text-primary hover:text-accent transition-colors">
+                  anupama.s@thecanopi.ai
                 </a>
               </div>
               <div className="flex items-center gap-3 group">
@@ -233,7 +233,7 @@ export default function ContactPage() {
                 <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <MapPin className="h-5 w-5 text-gold" />
                 </div>
-                <span className="text-primary">INDIA</span>
+                <span className="text-primary">Hyderabad,India</span>
               </div>
             </div>
           </div>

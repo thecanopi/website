@@ -2,10 +2,10 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 
 export function SubHeroSection() {
   return (
-    <section className="py-20 md:py-28 bg-secondary relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6">
