@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { useToast } from "@/hooks/use-toast";
 import { format } from "date-fns";
-import { CalendarIcon, Clock, Mail, Phone, MapPin, Check, Sparkles } from "lucide-react";
+import { CalendarIcon, Clock, Mail, Phone, MapPin, Check, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PageTransition } from "@/components/shared/PageTransition";
 import { RevealOnScroll } from "@/components/shared/RevealOnScroll";
@@ -75,8 +75,6 @@ export default function ContactPage() {
       });
       if (error) {
         console.error("Failed to send notification email:", error);
-      } else {
-        console.log("Notification email sent successfully");
       }
     } catch (err) {
       console.error("Error sending notification email:", err);
@@ -187,15 +185,11 @@ export default function ContactPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
-          {/* Animated backgrounds */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-delayed" />
-
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
-                <div className="gold-accent-line mx-auto mb-6" />
+                <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Get In Touch</p>
               </RevealOnScroll>
               <RevealOnScroll delayMs={100}>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">Let's Build What's Next</h1>
@@ -210,58 +204,55 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Info */}
-        <section className="py-12 bg-secondary">
+        <section className="py-10 bg-secondary">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-              <div className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="h-5 w-5 text-gold" />
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Mail className="h-5 w-5 text-accent" />
                 </div>
-                <a href="mailto:anupama.s@thecanopi.ai" className="text-primary hover:text-accent transition-colors">
+                <a href="mailto:anupama.s@thecanopi.ai" className="text-foreground hover:text-accent transition-colors">
                   anupama.s@thecanopi.ai
                 </a>
               </div>
-              <div className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="h-5 w-5 text-gold" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Phone className="h-5 w-5 text-accent" />
                 </div>
-                <a href="tel:+919515212509" className="text-primary hover:text-accent transition-colors">
+                <a href="tel:+919515212509" className="text-foreground hover:text-accent transition-colors">
                   +91 9515212509
                 </a>
               </div>
-              <div className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="h-5 w-5 text-gold" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <MapPin className="h-5 w-5 text-accent" />
                 </div>
-                <span className="text-primary">Hyderabad,India</span>
+                <span className="text-foreground">Hyderabad,India</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Main Content */}
-        <section className="py-20 md:py-28 relative overflow-hidden">
-          <div className="absolute top-40 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-0 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl" />
-
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
               {/* Meeting Scheduler */}
               <RevealOnScroll>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-2">
+                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-2">
                     Connect with our founder or team
                   </h2>
-                  <p className="text-muted-foreground mb-8">
+                  <p className="text-muted-foreground mb-6">
                     Book time with our leadership team to explore how we can partner.
                   </p>
 
                   {bookingSuccess ? (
-                    <div className="premium-card text-center py-12">
-                      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                        <Check className="h-8 w-8 text-green-600" />
+                    <div className="premium-card text-center py-10">
+                      <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+                        <Check className="h-7 w-7 text-green-600" />
                       </div>
-                      <h3 className="text-xl font-serif font-bold text-primary mb-2">Meeting Request Received!</h3>
+                      <h3 className="text-xl font-serif font-bold text-foreground mb-2">Meeting Request Received!</h3>
                       <p className="text-muted-foreground mb-4">
                         You will receive the meeting link with details in 30 minutes.
                       </p>
@@ -279,11 +270,11 @@ export default function ContactPage() {
                     </div>
                   ) : (
                     <div className="premium-card">
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid md:grid-cols-2 gap-5">
                         {/* Calendar */}
                         <div>
-                          <h3 className="font-semibold text-primary mb-4 flex items-center gap-2">
-                            <CalendarIcon className="h-4 w-4 text-gold" />
+                          <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <CalendarIcon className="h-4 w-4 text-accent" />
                             Select a Date
                           </h3>
                           <Calendar
@@ -304,8 +295,8 @@ export default function ContactPage() {
 
                         {/* Time Slots */}
                         <div>
-                          <h3 className="font-semibold text-primary mb-4 flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-gold" />
+                          <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Clock className="h-4 w-4 text-accent" />
                             Available Times
                           </h3>
                           {selectedDate ? (
@@ -316,10 +307,10 @@ export default function ContactPage() {
                                     key={slot.id}
                                     onClick={() => setSelectedSlot(slot.id)}
                                     className={cn(
-                                      "w-full p-3 rounded-lg border text-left transition-all duration-300",
+                                      "w-full p-3 rounded-lg border text-left transition-all duration-200",
                                       selectedSlot === slot.id
-                                        ? "border-gold bg-gold/10 text-primary"
-                                        : "border-border hover:border-gold/50 hover:bg-muted/50",
+                                        ? "border-accent bg-accent/10 text-foreground"
+                                        : "border-border hover:border-accent/50 hover:bg-muted/50",
                                     )}
                                   >
                                     {slot.start_time.slice(0, 5)} - {slot.end_time.slice(0, 5)}
@@ -341,7 +332,7 @@ export default function ContactPage() {
 
                       {/* Meeting Form */}
                       {selectedSlot && (
-                        <form onSubmit={handleBookingSubmit} className="mt-6 pt-6 border-t space-y-4">
+                        <form onSubmit={handleBookingSubmit} className="mt-5 pt-5 border-t space-y-4">
                           <div className="grid sm:grid-cols-2 gap-4">
                             <Input
                               placeholder="Your Name *"
@@ -368,7 +359,7 @@ export default function ContactPage() {
                             onChange={(e) => setMeetingForm({ ...meetingForm, topic: e.target.value })}
                             rows={3}
                           />
-                          <Button type="submit" variant="gold" className="w-full" disabled={bookingMutation.isPending}>
+                          <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={bookingMutation.isPending}>
                             {bookingMutation.isPending ? "Booking..." : "Book Meeting"}
                           </Button>
                         </form>
@@ -379,10 +370,10 @@ export default function ContactPage() {
               </RevealOnScroll>
 
               {/* Contact Form */}
-              <RevealOnScroll delayMs={150}>
+              <RevealOnScroll delayMs={100}>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-2">Send us a message</h2>
-                  <p className="text-muted-foreground mb-8">
+                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-2">Send us a message</h2>
+                  <p className="text-muted-foreground mb-6">
                     Have a question or want to discuss a project? We'd love to hear from you.
                   </p>
 
@@ -421,8 +412,9 @@ export default function ContactPage() {
                       rows={5}
                       required
                     />
-                    <Button type="submit" variant="gold" className="w-full" disabled={contactMutation.isPending}>
+                    <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={contactMutation.isPending}>
                       {contactMutation.isPending ? "Sending..." : "Send Message"}
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </form>
                 </div>

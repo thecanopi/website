@@ -49,19 +49,19 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        'backdrop-blur-lg border-b',
-        'bg-primary border-accent/20 shadow-lg shadow-primary/20'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
+        'border-b bg-primary border-primary-foreground/10',
+        isScrolled && 'shadow-sm'
       )}
     >
       <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-18 md:h-22">
+        <nav className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center">
             <img 
               src={logo} 
               alt="Canopi Strategy Partners" 
-              className="h-12 md:h-16 lg:h-18 w-auto transition-all duration-300 group-hover:scale-105 brightness-0 invert drop-shadow-[0_0_12px_rgba(212,175,55,0.4)]" 
+              className="h-10 md:h-12 w-auto brightness-0 invert" 
             />
           </Link>
 
@@ -72,11 +72,10 @@ export function Navbar() {
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  'px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300',
-                  'hover:bg-primary-foreground/10',
+                  'px-3 py-2 text-sm font-medium transition-colors duration-200',
                   isActive(link.href)
                     ? 'text-accent'
-                    : 'text-primary-foreground/90 hover:text-primary-foreground'
+                    : 'text-primary-foreground/80 hover:text-primary-foreground'
                 )}
               >
                 {link.name}
@@ -84,12 +83,12 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button - Desktop with gold glow */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center">
             <Button 
               size="sm" 
               asChild 
-              className="bg-accent text-accent-foreground hover:bg-gold-light font-semibold px-6 shadow-md hover:shadow-glow-gold transition-all duration-300 hover:scale-105"
+              className="bg-accent text-accent-foreground hover:bg-gold-light font-medium px-5"
             >
               <Link to="/contact">Get in Touch</Link>
             </Button>
@@ -102,9 +101,9 @@ export function Navbar() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </button>
         </nav>
@@ -112,24 +111,24 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-primary/98 border-t border-accent/20 animate-fade-in">
-          <div className="container mx-auto px-4 py-4 space-y-2">
+        <div className="lg:hidden bg-primary border-t border-primary-foreground/10">
+          <div className="container mx-auto px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  'block px-3 py-2 text-sm font-medium rounded-lg transition-colors',
+                  'block px-3 py-2 text-sm font-medium transition-colors',
                   isActive(link.href)
-                    ? 'bg-accent/20 text-accent'
-                    : 'text-primary-foreground/80 hover:bg-primary-foreground/10'
+                    ? 'text-accent'
+                    : 'text-primary-foreground/80 hover:text-primary-foreground'
                 )}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-accent/20 space-y-2">
-              <Button className="w-full bg-accent text-accent-foreground hover:bg-gold-light font-semibold" asChild>
+            <div className="pt-3 border-t border-primary-foreground/10 mt-2">
+              <Button className="w-full bg-accent text-accent-foreground hover:bg-gold-light font-medium" asChild>
                 <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>

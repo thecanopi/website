@@ -2,21 +2,17 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 
 export function SubHeroSection() {
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+    <section className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center space-y-5">
           <RevealOnScroll>
-            <p className="text-xl md:text-2xl lg:text-3xl text-primary font-serif leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground font-serif leading-relaxed">
               You don't need more slides. You need partners who solve problems with you — 
               and move just as fast as your business demands.
             </p>
           </RevealOnScroll>
-          <RevealOnScroll delayMs={150}>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <RevealOnScroll delayMs={100}>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               We bring structured thinking, digital fluency, and execution agility to help 
               leaders solve their toughest challenges and seize their biggest opportunities.
             </p>

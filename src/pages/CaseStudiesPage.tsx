@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { ChevronDown, Quote, Sparkles, Target, TrendingUp, Building2, Zap, ArrowRight } from 'lucide-react';
+import { ChevronDown, Quote, Target, TrendingUp, Building2, Zap, ArrowRight } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { PageTransition } from '@/components/shared/PageTransition';
@@ -19,93 +19,67 @@ interface CaseStudy {
 }
 
 const industryIcons: Record<string, React.ReactNode> = {
-  'Healthcare': <Building2 className="h-5 w-5" />,
-  'AI Innovation': <Sparkles className="h-5 w-5" />,
-  'Life Sciences': <Target className="h-5 w-5" />,
-  'HealthTech': <TrendingUp className="h-5 w-5" />,
-  'Market Research': <TrendingUp className="h-5 w-5" />,
-  'Education': <Building2 className="h-5 w-5" />,
+  'Healthcare': <Building2 className="h-4 w-4" />,
+  'AI Innovation': <TrendingUp className="h-4 w-4" />,
+  'Life Sciences': <Target className="h-4 w-4" />,
+  'HealthTech': <TrendingUp className="h-4 w-4" />,
+  'Market Research': <TrendingUp className="h-4 w-4" />,
+  'Education': <Building2 className="h-4 w-4" />,
 };
 
-const industryColors: Record<string, { gradient: string; bg: string; glow: string }> = {
-  'Healthcare': { gradient: 'from-purple-600 to-purple-400', bg: 'bg-purple-500/10', glow: 'shadow-purple-500/20' },
-  'AI Innovation': { gradient: 'from-gold to-amber-500', bg: 'bg-gold/10', glow: 'shadow-gold/20' },
-  'Life Sciences': { gradient: 'from-emerald-600 to-emerald-400', bg: 'bg-emerald-500/10', glow: 'shadow-emerald-500/20' },
-  'HealthTech': { gradient: 'from-blue-600 to-blue-400', bg: 'bg-blue-500/10', glow: 'shadow-blue-500/20' },
-  'Market Research': { gradient: 'from-orange-600 to-orange-400', bg: 'bg-orange-500/10', glow: 'shadow-orange-500/20' },
-  'Education': { gradient: 'from-pink-600 to-pink-400', bg: 'bg-pink-500/10', glow: 'shadow-pink-500/20' },
+const industryColors: Record<string, { gradient: string; bg: string }> = {
+  'Healthcare': { gradient: 'from-purple-600 to-purple-500', bg: 'bg-purple-50' },
+  'AI Innovation': { gradient: 'from-amber-500 to-amber-400', bg: 'bg-amber-50' },
+  'Life Sciences': { gradient: 'from-emerald-600 to-emerald-500', bg: 'bg-emerald-50' },
+  'HealthTech': { gradient: 'from-blue-600 to-blue-500', bg: 'bg-blue-50' },
+  'Market Research': { gradient: 'from-orange-600 to-orange-500', bg: 'bg-orange-50' },
+  'Education': { gradient: 'from-pink-600 to-pink-500', bg: 'bg-pink-50' },
 };
 
-function CaseStudyCard({
-  study,
-  index,
-  isExpanded,
-  onToggle
-}: {
-  study: CaseStudy;
-  index: number;
+function CaseStudyCard({ 
+  study, 
+  index, 
+  isExpanded, 
+  onToggle 
+}: { 
+  study: CaseStudy; 
+  index: number; 
   isExpanded: boolean;
   onToggle: () => void;
 }) {
-  const colors = study.industry ? industryColors[study.industry] || { gradient: 'from-primary to-primary/70', bg: 'bg-primary/10', glow: 'shadow-primary/20' } : { gradient: 'from-primary to-primary/70', bg: 'bg-primary/10', glow: 'shadow-primary/20' };
+  const colors = study.industry ? industryColors[study.industry] || { gradient: 'from-primary to-primary/80', bg: 'bg-primary/5' } : { gradient: 'from-primary to-primary/80', bg: 'bg-primary/5' };
   const isEven = index % 2 === 0;
 
   return (
-    <RevealOnScroll delayMs={index * 80}>
+    <RevealOnScroll delayMs={index * 60}>
       <div
         className={cn(
-          "group relative overflow-hidden rounded-3xl transition-all duration-500 cursor-pointer",
-          "border-2 border-border/30",
-          isEven ? "bg-card" : "bg-secondary/50",
-          "hover:border-accent/50",
-          isExpanded ? "shadow-2xl" : "hover:shadow-xl",
-          colors.glow,
-          isExpanded && "ring-2 ring-accent/30"
+          "group relative overflow-hidden rounded-xl transition-all duration-300 cursor-pointer",
+          "border border-border",
+          isEven ? "bg-card" : "bg-secondary/30",
+          "hover:border-accent/40 hover:shadow-md",
+          isExpanded && "shadow-lg border-accent/50"
         )}
         onClick={onToggle}
       >
-        {/* Animated gradient border on hover */}
-        <div className={cn(
-          "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
-          "bg-gradient-to-r p-[2px]",
-          colors.gradient
-        )}>
-          <div className={cn("absolute inset-[2px] rounded-[22px]", isEven ? "bg-card" : "bg-secondary/80")} />
-        </div>
-
-        {/* Shimmer effect on hover */}
-        <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-          <div className="shimmer-case-study" />
-        </div>
-
-        {/* Floating background accent */}
-        <div className={cn(
-          "absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700",
-          colors.bg
-        )} />
-        <div className={cn(
-          "absolute -bottom-20 -left-20 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700",
-          colors.bg
-        )} />
-
-        <div className="relative p-6 md:p-8 lg:p-10">
+        <div className="p-6 md:p-8">
           {/* Header row */}
-          <div className="flex items-start justify-between gap-4 mb-6">
-            <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3 flex-wrap">
               {/* Case Study Number Badge */}
               <div className={cn(
-                "flex items-center justify-center w-14 h-14 rounded-2xl font-serif font-bold text-xl text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300",
+                "flex items-center justify-center w-12 h-12 rounded-xl font-serif font-bold text-lg text-white",
                 "bg-gradient-to-br",
                 colors.gradient
               )}>
                 {String(index + 1).padStart(2, '0')}
               </div>
-
+              
               {/* Industry Badge */}
               {study.industry && (
                 <span className={cn(
-                  "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium",
-                  "bg-gradient-to-r text-white shadow-lg transform group-hover:scale-105 transition-transform duration-300",
+                  "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium",
+                  "bg-gradient-to-r text-white",
                   colors.gradient
                 )}>
                   {industryIcons[study.industry]}
@@ -114,37 +88,28 @@ function CaseStudyCard({
               )}
             </div>
 
-            {/* Expand Button with animation */}
+            {/* Expand Button */}
             <button className={cn(
-              "flex items-center justify-center w-12 h-12 rounded-full transition-all duration-500",
-              "bg-secondary hover:bg-accent hover:text-primary-foreground",
-              "group-hover:shadow-lg",
-              isExpanded && "bg-accent text-primary-foreground rotate-180 shadow-lg shadow-accent/30"
+              "flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300",
+              "bg-secondary hover:bg-accent hover:text-accent-foreground",
+              isExpanded && "bg-accent text-accent-foreground rotate-180"
             )}>
               <ChevronDown className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Title with animated underline */}
-          <div className="mb-4">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-primary group-hover:text-accent transition-colors duration-300 relative inline-block">
-              {study.title}
-              <span className={cn(
-                "absolute bottom-0 left-0 h-0.5 bg-gradient-to-r transition-all duration-500",
-                colors.gradient,
-                isExpanded ? "w-full" : "w-0 group-hover:w-full"
-              )} />
-            </h3>
-          </div>
+          {/* Title */}
+          <h3 className="text-xl md:text-2xl font-serif font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+            {study.title}
+          </h3>
 
-          {/* Tags with stagger animation */}
+          {/* Tags */}
           {study.tags && study.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="flex flex-wrap gap-2 mb-4">
               {study.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-muted/80 text-muted-foreground border border-border/50 transform group-hover:scale-105 transition-transform duration-300"
-                  style={{ transitionDelay: `${i * 50}ms` }}
+                <span 
+                  key={i} 
+                  className="px-2.5 py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground"
                 >
                   {tag}
                 </span>
@@ -152,45 +117,42 @@ function CaseStudyCard({
             </div>
           )}
 
-          {/* Challenge Preview with icon */}
+          {/* Challenge Preview */}
           <div className="flex items-start gap-3">
             <div className={cn(
-              "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-1",
+              "flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center mt-0.5",
               colors.bg
             )}>
-              <Target className={cn("h-4 w-4", isEven ? "text-primary" : "text-accent")} />
+              <Target className="h-3.5 w-3.5 text-foreground/70" />
             </div>
             <p className={cn(
-              "text-muted-foreground leading-relaxed transition-all duration-300",
+              "text-muted-foreground leading-relaxed",
               isExpanded ? "" : "line-clamp-2"
             )}>
-              <span className="font-semibold text-primary">Challenge: </span>
+              <span className="font-medium text-foreground">Challenge: </span>
               {study.challenge}
             </p>
           </div>
 
-          {/* Expanded Content with smooth animation */}
+          {/* Expanded Content */}
           <div className={cn(
-            "grid transition-all duration-500 ease-out overflow-hidden",
-            isExpanded ? "grid-rows-[1fr] opacity-100 mt-8" : "grid-rows-[0fr] opacity-0 mt-0"
+            "grid transition-all duration-400 overflow-hidden",
+            isExpanded ? "grid-rows-[1fr] opacity-100 mt-6" : "grid-rows-[0fr] opacity-0 mt-0"
           )}>
             <div className="min-h-0">
-              <div className="pt-8 border-t border-border/50">
-                <div className="grid md:grid-cols-2 gap-8">
+              <div className="pt-6 border-t border-border">
+                <div className="grid md:grid-cols-2 gap-6">
                   {/* Solution */}
-                  <div className={cn(
-                    "relative p-6 rounded-2xl border border-border/30 transition-all duration-300 hover:shadow-lg",
-                    colors.bg
-                  )}>
-                    <div className="flex items-center gap-3 mb-4">
+                  <div className={cn("p-5 rounded-xl border border-border", colors.bg)}>
+                    <div className="flex items-center gap-2 mb-3">
                       <div className={cn(
-                        "w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white",
+                        "w-8 h-8 rounded-lg flex items-center justify-center text-white",
                         "bg-gradient-to-br",
                         colors.gradient
                       )}>
-                        <Zap className="h-5 w-5" />
+                        <Zap className="h-4 w-4" />
                       </div>
-                      <h4 className="text-lg font-bold text-primary">Solution</h4>
+                      <h4 className="text-base font-bold text-foreground">Solution</h4>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       {study.solution}
@@ -198,12 +160,12 @@ function CaseStudyCard({
                   </div>
 
                   {/* Outcome */}
-                  <div className="relative p-6 rounded-2xl border border-border/30 bg-green-500/5 transition-all duration-300 hover:shadow-lg">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-emerald-500 flex items-center justify-center shadow-lg text-white">
-                        <TrendingUp className="h-5 w-5" />
+                  <div className="p-5 rounded-xl border border-border bg-green-50">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-600 to-emerald-500 flex items-center justify-center text-white">
+                        <TrendingUp className="h-4 w-4" />
                       </div>
-                      <h4 className="text-lg font-bold text-primary">Outcome</h4>
+                      <h4 className="text-base font-bold text-foreground">Outcome</h4>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       {study.outcome}
@@ -211,11 +173,11 @@ function CaseStudyCard({
                   </div>
                 </div>
 
-                {/* Read more CTA */}
-                <div className="mt-6 flex justify-end">
+                {/* Learn more CTA */}
+                <div className="mt-5 flex justify-end">
                   <button className={cn(
-                    "inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl",
-                    "bg-gradient-to-r",
+                    "inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium text-white transition-colors",
+                    "bg-gradient-to-r hover:opacity-90",
                     colors.gradient
                   )}>
                     <span>Learn More</span>
@@ -229,7 +191,7 @@ function CaseStudyCard({
 
         {/* Bottom accent line */}
         <div className={cn(
-          "absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left",
+          "absolute bottom-0 left-0 right-0 h-0.5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left",
           "bg-gradient-to-r",
           colors.gradient
         )} />
@@ -275,47 +237,35 @@ export default function CaseStudiesPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
-          {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-dark" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
-
-          {/* Animated orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl animate-float-delayed" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" />
-
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/20 text-accent mb-8 border border-accent/30 backdrop-blur-sm hover:scale-105 transition-transform">
-                  <Sparkles className="h-4 w-4 animate-spin-slow" />
-                  <span className="text-sm font-medium uppercase tracking-wider">Our Work</span>
-                </div>
+                <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Our Work</p>
               </RevealOnScroll>
-
+              
               <RevealOnScroll delayMs={100}>
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-primary-foreground mb-6">
-                  Case <span className="text-gradient">Studies</span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
+                  Case Studies
                 </h1>
               </RevealOnScroll>
-
+              
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
                   Real transformations. Measurable results. Lasting partnerships across Healthcare, AI, Life Sciences, and beyond.
                 </p>
               </RevealOnScroll>
 
-              {/* Stats with animation */}
+              {/* Stats */}
               <RevealOnScroll delayMs={300}>
-                <div className="grid grid-cols-3 gap-8 mt-12 max-w-xl mx-auto">
+                <div className="grid grid-cols-3 gap-6 mt-10 max-w-md mx-auto">
                   {[
                     { value: '12+', label: 'Case Studies' },
                     { value: '6', label: 'Industries' },
                     { value: '40%+', label: 'Avg. Improvement' },
                   ].map((stat, i) => (
-                    <div key={i} className="text-center group cursor-default">
-                      <div className="text-3xl md:text-4xl font-bold text-accent group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+                    <div key={i} className="text-center">
+                      <div className="text-2xl md:text-3xl font-bold text-accent">{stat.value}</div>
                       <div className="text-sm text-primary-foreground/60">{stat.label}</div>
                     </div>
                   ))}
@@ -323,42 +273,35 @@ export default function CaseStudiesPage() {
               </RevealOnScroll>
             </div>
           </div>
-
-          {/* Bottom wave */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent" />
         </section>
 
         {/* Case Studies Section */}
-        <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-          {/* Background decorations */}
-          <div className="absolute top-40 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-0 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl" />
-
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container mx-auto px-4">
             <RevealOnScroll>
-              <div className="max-w-4xl mx-auto mb-12 text-center">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-4">
-                  Explore Our <span className="text-gradient">Success Stories</span>
+              <div className="max-w-4xl mx-auto mb-10 text-center">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3">
+                  Explore Our Success Stories
                 </h2>
                 <p className="text-muted-foreground">
-                  Click on any case study to expand and see the full details
+                  Click on any case study to see the full details
                 </p>
               </div>
             </RevealOnScroll>
 
             {isLoading ? (
-              <div className="max-w-5xl mx-auto space-y-6">
+              <div className="max-w-4xl mx-auto space-y-5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Skeleton key={i} className="h-48 rounded-3xl" />
+                  <Skeleton key={i} className="h-40 rounded-xl" />
                 ))}
               </div>
             ) : caseStudies && caseStudies.length > 0 ? (
-              <div className="max-w-5xl mx-auto space-y-8">
+              <div className="max-w-4xl mx-auto space-y-6">
                 {caseStudies.map((study, index) => (
-                  <CaseStudyCard
-                    key={study.id}
-                    study={study}
-                    index={index}
+                  <CaseStudyCard 
+                    key={study.id} 
+                    study={study} 
+                    index={index} 
                     isExpanded={expandedId === study.id}
                     onToggle={() => handleToggle(study.id)}
                   />
@@ -373,20 +316,13 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 md:py-28 bg-gradient-to-br from-secondary via-secondary to-secondary/80 relative overflow-hidden">
-          {/* Background decorations */}
-          <div className="absolute top-20 left-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
-
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-16 md:py-24 bg-secondary">
+          <div className="container mx-auto px-4">
             <RevealOnScroll>
-              <div className="max-w-4xl mx-auto mb-12 text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent mb-6 border border-accent/20">
-                  <Quote className="h-4 w-4" />
-                  <span className="text-sm font-medium">Testimonials</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">
-                  What Our <span className="text-gradient">Clients Say</span>
+              <div className="max-w-4xl mx-auto mb-10 text-center">
+                <p className="text-accent text-sm font-medium uppercase tracking-wider mb-3">Testimonials</p>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3">
+                  What Our Clients Say
                 </h2>
                 <p className="text-muted-foreground">
                   Trusted by leaders across industries
@@ -394,91 +330,57 @@ export default function CaseStudiesPage() {
               </div>
             </RevealOnScroll>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {testimonialsLoading ? (
-                Array.from({ length: 4 }).map((_, i) => (
-                  <Skeleton key={i} className="h-48 rounded-2xl" />
-                ))
-              ) : testimonials && testimonials.length > 0 ? (
-                testimonials.map((testimonial, index) => (
-                  <RevealOnScroll key={testimonial.id} delayMs={index * 100}>
-                    <div className="group relative p-8 rounded-3xl bg-card border-2 border-border/30 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 overflow-hidden">
-                      {/* Decorative gradient */}
-                      <div className="absolute -top-20 -right-20 w-40 h-40 bg-accent/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                      <Quote className="h-10 w-10 text-accent/30 mb-4 group-hover:text-accent/60 group-hover:scale-110 transition-all duration-300" />
-                      <blockquote className="text-lg text-primary font-serif italic mb-6 leading-relaxed">
+            {testimonialsLoading ? (
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} className="h-36 rounded-xl" />
+                ))}
+              </div>
+            ) : testimonials && testimonials.length > 0 ? (
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {testimonials.map((testimonial, index) => (
+                  <RevealOnScroll key={testimonial.id} delayMs={index * 80}>
+                    <div className="relative p-6 rounded-xl bg-card border border-border">
+                      <Quote className="absolute top-4 left-4 h-8 w-8 text-accent/20" />
+                      <blockquote className="text-foreground/90 italic leading-relaxed mb-4 pl-6">
                         "{testimonial.quote}"
                       </blockquote>
-                      <p className="text-sm text-muted-foreground font-medium">
-                        — {testimonial.author_role}
-                      </p>
-
-                      {/* Bottom accent */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-accent to-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                      <div className="pl-6">
+                        <p className="text-sm font-medium text-accent">
+                          — {testimonial.author_role}
+                        </p>
+                      </div>
                     </div>
                   </RevealOnScroll>
-                ))
-              ) : (
-                <p className="text-center text-muted-foreground col-span-2">
-                  No testimonials available yet.
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4">
+            <RevealOnScroll>
+              <div className="max-w-2xl mx-auto text-center">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">
+                  Ready to Create Your Success Story?
+                </h2>
+                <p className="text-primary-foreground/80 mb-8">
+                  Let's discuss how we can help transform your organisation.
                 </p>
-              )}
-            </div>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
       </div>
-
-      {/* Custom animations */}
-      <style>{`
-        .shimmer-case-study {
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.05),
-            transparent
-          );
-          transition: left 0.5s ease;
-        }
-        
-        .group:hover .shimmer-case-study {
-          left: 100%;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(2deg); }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-float-delayed {
-          animation: float 8s ease-in-out infinite;
-          animation-delay: 1s;
-        }
-        
-        .animate-pulse-slow {
-          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        .animate-spin-slow {
-          animation: spin 4s linear infinite;
-        }
-
-        .text-gradient {
-          background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--accent)) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-      `}</style>
     </PageTransition>
   );
 }

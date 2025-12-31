@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PageTransition } from '@/components/shared/PageTransition';
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { Calendar, User, ArrowRight, ChevronDown, X } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
@@ -220,34 +221,36 @@ export default function InsightsPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
-          {/* Animated backgrounds */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-delayed" />
-          
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="gold-accent-line mx-auto mb-6" />
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
-                Insights
-              </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80">
-                Perspectives and strategic insights from our team
-              </p>
+              <RevealOnScroll>
+                <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Perspectives</p>
+              </RevealOnScroll>
+              <RevealOnScroll delayMs={100}>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
+                  Insights
+                </h1>
+              </RevealOnScroll>
+              <RevealOnScroll delayMs={200}>
+                <p className="text-lg md:text-xl text-primary-foreground/80">
+                  Perspectives and strategic insights from our team
+                </p>
+              </RevealOnScroll>
             </div>
           </div>
         </section>
 
         {/* Blogs Section */}
-        <section className="py-20 md:py-28">
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-8">
+              <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-8">
                 Blog Posts
               </h2>
               
               {isLoading ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {Array.from({ length: 3 }).map((_, i) => (
                     <div key={i} className="premium-card space-y-4">
                       <Skeleton className="h-48 w-full rounded-lg" />
@@ -258,7 +261,7 @@ export default function InsightsPage() {
                   ))}
                 </div>
               ) : blogs.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {blogs.map((post) => (
                     <BlogCard 
                       key={post.id} 
@@ -279,15 +282,15 @@ export default function InsightsPage() {
         </section>
 
         {/* Articles Section */}
-        <section className="py-20 md:py-28 bg-secondary">
+        <section className="py-16 md:py-24 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-8">
+              <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-8">
                 Articles & White Papers
               </h2>
               
               {isLoading ? (
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {Array.from({ length: 2 }).map((_, i) => (
                     <div key={i} className="premium-card flex gap-6">
                       <Skeleton className="h-32 w-48 rounded-lg flex-shrink-0" />
@@ -300,7 +303,7 @@ export default function InsightsPage() {
                   ))}
                 </div>
               ) : articles.length > 0 ? (
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {articles.map((post) => (
                     <ArticleCard 
                       key={post.id} 

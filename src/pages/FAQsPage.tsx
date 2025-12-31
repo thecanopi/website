@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
-import { SectionHeading } from '@/components/shared/SectionHeading';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { MessageCircleQuestion, Sparkles, ArrowRight } from 'lucide-react';
+import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const faqs = [
@@ -124,64 +122,41 @@ Quick wins often include clearer priorities, faster decisions, and early operati
 ];
 
 const categoryColors: Record<string, string> = {
-  Services: 'from-purple-500 to-purple-400',
-  Process: 'from-cyan-500 to-cyan-400',
-  Pricing: 'from-amber-500 to-yellow-400',
-  Engagement: 'from-emerald-500 to-emerald-400',
-  Results: 'from-pink-500 to-pink-400',
-  Security: 'from-blue-500 to-blue-400',
-  Team: 'from-indigo-500 to-indigo-400',
-  Technology: 'from-orange-500 to-orange-400',
-  Ethics: 'from-rose-500 to-rose-400',
+  Services: 'from-purple-600 to-purple-500',
+  Process: 'from-cyan-600 to-cyan-500',
+  Pricing: 'from-amber-500 to-amber-400',
+  Engagement: 'from-emerald-600 to-emerald-500',
+  Results: 'from-pink-600 to-pink-500',
+  Security: 'from-blue-600 to-blue-500',
+  Team: 'from-indigo-600 to-indigo-500',
+  Technology: 'from-orange-600 to-orange-500',
+  Ethics: 'from-rose-600 to-rose-500',
 };
 
 export default function FAQsPage() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-emerald-deep" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_var(--tw-gradient-stops))] from-gold/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,_var(--tw-gradient-stops))] from-teal-mid/15 via-transparent to-transparent" />
-        
-        {/* Floating orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-gold/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 left-1/4 w-56 h-56 bg-teal-mid/15 rounded-full blur-3xl animate-float-delayed" />
-          <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-white/5 rounded-full blur-2xl animate-pulse" />
-        </div>
-        
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }} />
-        
-        <div className="relative z-10 container mx-auto px-4">
+      <section className="pt-20 py-20 md:py-28 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
           <RevealOnScroll>
-            <div className="flex flex-col items-center text-center">
-              {/* Icon badge */}
-              <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/30 shadow-lg shadow-gold/10">
-                <MessageCircleQuestion className="w-8 h-8 text-gold" />
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+              {/* Icon */}
+              <div className="inline-flex items-center justify-center w-14 h-14 mb-5 rounded-xl bg-accent/20 border border-accent/30">
+                <MessageCircleQuestion className="w-7 h-7 text-accent" />
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-5">
                 Frequently Asked Questions
               </h1>
-              <p className="text-lg md:text-xl text-white/80 max-w-2xl">
+              <p className="text-lg text-primary-foreground/80 max-w-2xl">
                 Find answers to common questions about working with Canopi Strategy Partners
               </p>
               
-              {/* Stats bar */}
-              <div className="flex items-center gap-6 mt-8 text-white/60 text-sm">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-gold" />
-                  <span>{faqs.length} Questions</span>
-                </div>
-                <div className="w-px h-4 bg-white/20" />
+              {/* Stats */}
+              <div className="flex items-center gap-5 mt-8 text-primary-foreground/60 text-sm">
+                <span>{faqs.length} Questions</span>
+                <div className="w-px h-4 bg-primary-foreground/20" />
                 <span>{Object.keys(categoryColors).length} Categories</span>
               </div>
             </div>
@@ -190,87 +165,46 @@ export default function FAQsPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-16 md:py-24 relative bg-white">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-3">
               {faqs.map((faq, index) => (
-                <RevealOnScroll key={index} delayMs={index * 50}>
+                <RevealOnScroll key={index} delayMs={index * 40}>
                   <AccordionItem
                     value={`item-${index}`}
-                    className={cn(
-                      "group relative bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-500",
-                      "hover:border-gold/50 hover:shadow-xl hover:shadow-gold/10",
-                      hoveredIndex === index && "border-gold/60 shadow-2xl shadow-gold/15"
-                    )}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    className="bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors"
                   >
-                    {/* Animated gradient border on hover */}
-                    <div className={cn(
-                      "absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none",
-                      "bg-gradient-to-r from-gold/20 via-purple-bright/20 to-gold/20",
-                      hoveredIndex === index && "opacity-100"
-                    )} style={{ padding: '1px' }}>
-                      <div className="absolute inset-[1px] rounded-2xl bg-card" />
-                    </div>
-                    
-                    {/* Shimmer effect */}
-                    <div className={cn(
-                      "absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none",
-                      hoveredIndex === index && "opacity-100"
-                    )}>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer" />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="relative px-6 py-1">
-                      <AccordionTrigger className="text-left py-5 hover:no-underline group/trigger">
-                        <div className="flex items-start gap-4 w-full pr-4">
+                    <div className="px-5 py-1">
+                      <AccordionTrigger className="text-left py-4 hover:no-underline">
+                        <div className="flex items-start gap-3 w-full pr-3">
                           {/* Question number */}
                           <div className={cn(
-                            "shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300",
-                            "bg-gradient-to-br",
-                            categoryColors[faq.category] || 'from-gray-500 to-gray-400',
-                            "text-white shadow-lg",
-                            hoveredIndex === index && "scale-110"
+                            "shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold",
+                            "bg-gradient-to-br text-white",
+                            categoryColors[faq.category] || 'from-gray-500 to-gray-400'
                           )}>
                             {String(index + 1).padStart(2, '0')}
                           </div>
                           
                           <div className="flex-1 min-w-0">
                             {/* Category badge */}
-                            <span className={cn(
-                              "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mb-2 transition-all duration-300",
-                              "bg-muted text-muted-foreground",
-                              hoveredIndex === index && "bg-gold/10 text-gold"
-                            )}>
+                            <span className="inline-flex px-2 py-0.5 rounded-full text-xs font-medium mb-1.5 bg-muted text-muted-foreground">
                               {faq.category}
                             </span>
                             
                             {/* Question */}
-                            <h3 className={cn(
-                              "text-lg font-semibold text-slate-900 transition-colors duration-300",
-                              "group-hover/trigger:text-primary"
-                            )}>
+                            <h3 className="text-base font-semibold text-foreground">
                               {faq.question}
                             </h3>
                           </div>
                         </div>
                       </AccordionTrigger>
                       
-                      <AccordionContent className="pb-6">
-                        <div className="pl-14">
-                          <div className="relative">
-                            {/* Decorative line */}
-                            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent rounded-full" />
-                            
-                            <div className="pl-5 text-slate-700 whitespace-pre-line leading-relaxed">
-                              {faq.answer}
-                            </div>
+                      <AccordionContent className="pb-5">
+                        <div className="pl-12">
+                          <div className="text-muted-foreground whitespace-pre-line leading-relaxed text-sm">
+                            {faq.answer}
                           </div>
                         </div>
                       </AccordionContent>
@@ -284,47 +218,27 @@ export default function FAQsPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-deep to-primary" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_var(--tw-gradient-stops))] from-gold/10 via-transparent to-transparent" />
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-        
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
           <RevealOnScroll>
             <div className="max-w-2xl mx-auto text-center">
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold mb-4">
                 Still have questions?
               </h3>
-              <p className="text-white/70 text-lg mb-8">
+              <p className="text-primary-foreground/80 mb-8">
                 If you have additional questions or would like to explore a potential engagement, our team is ready to help.
               </p>
               <a
                 href="/contact"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-light transition-all duration-300 shadow-xl shadow-gold/30 hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
               >
                 Contact Our Team
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </RevealOnScroll>
         </div>
       </section>
-      
-      {/* Add shimmer animation */}
-      <style>{`
-        @keyframes shimmer {
-          100% {
-            transform: translateX(100%);
-          }
-        }
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-      `}</style>
     </main>
   );
 }
