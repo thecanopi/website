@@ -26,7 +26,7 @@ export function ValuePropositions() {
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <SectionHeading
-          title="Built for Leaders Who Want Results, Not Reports"
+          title="Built for leaders who want results — not just reports, but both"
         />
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

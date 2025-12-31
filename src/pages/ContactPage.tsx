@@ -241,7 +241,7 @@ export default function ContactPage() {
               <RevealOnScroll>
                 <div>
                   <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-2">
-                    Connect with our founder or team
+                    Connect with our team
                   </h2>
                   <p className="text-muted-foreground mb-6">
                     Book time with our leadership team to explore how we can partner.
