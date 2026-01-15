@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { PageTransition } from '@/components/shared/PageTransition';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 interface CaseStudy {
   id: string;
@@ -237,8 +238,13 @@ export default function CaseStudiesPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-28 text-white overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${pageBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
                 <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Our Work</p>
@@ -251,26 +257,11 @@ export default function CaseStudiesPage() {
               </RevealOnScroll>
               
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                   Real transformations. Measurable results. Lasting partnerships across Healthcare, AI, Life Sciences, and beyond.
                 </p>
               </RevealOnScroll>
 
-              {/* Stats */}
-              <RevealOnScroll delayMs={300}>
-                <div className="grid grid-cols-3 gap-6 mt-10 max-w-md mx-auto">
-                  {[
-                    { value: '12+', label: 'Case Studies' },
-                    { value: '6', label: 'Industries' },
-                    { value: '40%+', label: 'Avg. Improvement' },
-                  ].map((stat, i) => (
-                    <div key={i} className="text-center">
-                      <div className="text-2xl md:text-3xl font-bold text-accent">{stat.value}</div>
-                      <div className="text-sm text-primary-foreground/60">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </RevealOnScroll>
             </div>
           </div>
         </section>
@@ -280,12 +271,9 @@ export default function CaseStudiesPage() {
           <div className="container mx-auto px-4">
             <RevealOnScroll>
               <div className="max-w-4xl mx-auto mb-10 text-center">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-3">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
                   Explore Our Success Stories
                 </h2>
-                <p className="text-muted-foreground">
-                  Click on any case study to see the full details
-                </p>
               </div>
             </RevealOnScroll>
 

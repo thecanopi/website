@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/accordion';
 import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 const faqs = [
   {
@@ -137,8 +138,13 @@ export default function FAQsPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-20 py-20 md:py-28 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-20 py-20 md:py-28 text-white overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${pageBg})` }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 container mx-auto px-4">
           <RevealOnScroll>
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
               {/* Icon */}
@@ -149,16 +155,9 @@ export default function FAQsPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-5">
                 Frequently Asked Questions
               </h1>
-              <p className="text-lg text-primary-foreground/80 max-w-2xl">
-                Find answers to common questions about working with Canopi Strategy Partners
+              <p className="text-lg text-white/80 max-w-2xl">
+                Get the answers you need about our approach and services.
               </p>
-              
-              {/* Stats */}
-              <div className="flex items-center gap-5 mt-8 text-primary-foreground/60 text-sm">
-                <span>{faqs.length} Questions</span>
-                <div className="w-px h-4 bg-primary-foreground/20" />
-                <span>{Object.keys(categoryColors).length} Categories</span>
-              </div>
             </div>
           </RevealOnScroll>
         </div>

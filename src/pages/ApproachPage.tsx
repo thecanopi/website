@@ -3,14 +3,20 @@ import { PageTransition } from '@/components/shared/PageTransition';
 import { OrbitSection } from '@/components/approach/OrbitSection';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 export default function ApproachPage() {
   return (
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-28 text-white overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${pageBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
                 <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Our Methodology</p>
@@ -23,7 +29,7 @@ export default function ApproachPage() {
               </RevealOnScroll>
               
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                   Organisations change when strategy and execution move together. Our approach ensures both.
                 </p>
               </RevealOnScroll>

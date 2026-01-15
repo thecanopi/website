@@ -4,6 +4,7 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { PageTransition } from '@/components/shared/PageTransition';
 import { Building2, Shield, Lightbulb, FlaskConical, Network, Heart, ChevronRight, ArrowRight, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 const sectors = [
   {
@@ -202,8 +203,13 @@ export default function HealthcarePage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-28 text-white overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${pageBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
                 <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">Industry Focus</p>
@@ -214,7 +220,7 @@ export default function HealthcarePage() {
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                   We help healthcare organisations transform how they operate, deliver 
                   care, and create value for patients, clinicians, and communities.
                 </p>
@@ -228,7 +234,7 @@ export default function HealthcarePage() {
           <div className="container mx-auto px-4">
             <SectionHeading 
               title="Where We Work" 
-              subtitle="Tap on any sector to explore the organizations we partner with"
+              subtitle="Healthcare organisations we partner with across the ecosystem"
             />
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">

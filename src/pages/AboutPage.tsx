@@ -2,6 +2,7 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { PageTransition } from '@/components/shared/PageTransition';
 import { Eye, Zap, Users, Handshake, Lightbulb, ArrowRight, Target, Rocket } from 'lucide-react';
 import { useState } from 'react';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 const values = [
   { icon: Eye, title: 'Clarity over complexity', description: 'We cut through noise to deliver actionable insights' },
@@ -25,8 +26,13 @@ export default function AboutPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-28 text-white overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${pageBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
                 <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">About Canopi Strategy Partners</p>
@@ -39,7 +45,7 @@ export default function AboutPage() {
               </RevealOnScroll>
               
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                   A modern consulting firm that helps organisations navigate 
                   complexity, accelerate growth, and transform with confidence.
                 </p>
@@ -49,17 +55,17 @@ export default function AboutPage() {
                 <div className="flex items-center justify-center gap-8 mt-10">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-accent">10+</div>
-                    <div className="text-sm text-primary-foreground/60">Years Experience</div>
+                    <div className="text-sm text-white/60">Years Experience</div>
                   </div>
-                  <div className="w-px h-10 bg-primary-foreground/20" />
+                  <div className="w-px h-10 bg-white/20" />
                   <div className="text-center">
                     <div className="text-3xl font-bold text-accent">50+</div>
-                    <div className="text-sm text-primary-foreground/60">Clients Served</div>
+                    <div className="text-sm text-white/60">Clients Served</div>
                   </div>
-                  <div className="w-px h-10 bg-primary-foreground/20" />
+                  <div className="w-px h-10 bg-white/20" />
                   <div className="text-center">
                     <div className="text-3xl font-bold text-accent">4</div>
-                    <div className="text-sm text-primary-foreground/60">Industries</div>
+                    <div className="text-sm text-white/60">Industries</div>
                   </div>
                 </div>
               </RevealOnScroll>

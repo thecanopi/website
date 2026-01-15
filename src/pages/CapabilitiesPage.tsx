@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { PageTransition } from '@/components/shared/PageTransition';
 import { TrendingUp, Megaphone, Brain, Settings, Users, Lightbulb, Rocket, ArrowRight } from 'lucide-react';
+import pageBg from '@/assets/page-bg-abstract.jpg';
 
 const capabilities = [
   {
@@ -158,11 +159,6 @@ const FlipCard = ({ capability, index }: FlipCardProps) => {
             {capability.shortTitle}
           </h3>
 
-          {/* Arrow indicator */}
-          <div className="absolute bottom-5 flex items-center gap-2 text-white/70 text-sm">
-            <span className="text-xs">Tap to explore</span>
-            <ArrowRight className="w-4 h-4" />
-          </div>
 
           {/* Number badge */}
           <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">
@@ -198,17 +194,6 @@ const FlipCard = ({ capability, index }: FlipCardProps) => {
             ))}
           </ul>
 
-          {/* Bottom action area */}
-          <div className="mt-4 pt-3 border-t border-border/50">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-muted-foreground">
-                {capability.items.length} Services
-              </span>
-              <div className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${capability.color} text-white text-xs font-medium`}>
-                Learn More
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -220,8 +205,13 @@ export default function CapabilitiesPage() {
     <PageTransition>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
+        <section className="relative py-20 md:py-28 text-white overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${pageBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <RevealOnScroll>
                 <p className="text-accent text-sm font-medium uppercase tracking-wider mb-4">What We Do</p>
@@ -232,9 +222,9 @@ export default function CapabilitiesPage() {
                 </h1>
               </RevealOnScroll>
               <RevealOnScroll delayMs={200}>
-                <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                   A complete set of services to help organisations transform 
-                  and grow with purpose. Tap or hover to explore each capability.
+                  and grow with purpose. Hover or tap to explore each capability.
                 </p>
               </RevealOnScroll>
             </div>
