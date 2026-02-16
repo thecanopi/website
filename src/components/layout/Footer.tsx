@@ -38,7 +38,7 @@ export function Footer() {
             </p>
             <div className="flex gap-2">
               <a
-                href="https://www.linkedin.com/company/canopi-strategy-partners"
+                href="https://www.linkedin.com/company/canopiai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-primary-foreground/10 rounded-md hover:bg-primary-foreground/20 transition-colors duration-200"
