@@ -8,7 +8,10 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import { ScrollToTop } from "@/components/shared/ScrollToTop";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
+<<<<<<< HEAD
 import TeamPage from "@/pages/TeamPage";
+=======
+>>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
 import ApproachPage from "@/pages/ApproachPage";
 import CapabilitiesPage from "@/pages/CapabilitiesPage";
 import HealthcarePage from "@/pages/HealthcarePage";
@@ -40,7 +43,10 @@ const App = () => (
             <Route element={<PublicLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
+<<<<<<< HEAD
               <Route path="/team" element={<TeamPage />} />
+=======
+>>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
               <Route path="/approach" element={<ApproachPage />} />
               <Route path="/capabilities" element={<CapabilitiesPage />} />
               <Route path="/industries/healthcare" element={<HealthcarePage />} />
