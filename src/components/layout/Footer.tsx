@@ -11,10 +11,7 @@ const XIcon = ({ className }: { className?: string }) => (
 
 const footerLinks = [
   { name: "About", href: "/about" },
-<<<<<<< HEAD
   { name: "Team", href: "/team" },
-=======
->>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
   { name: "Capabilities", href: "/capabilities" },
   { name: "Industries", href: "/industries/healthcare" },
   { name: "Case Studies", href: "/case-studies" },
@@ -30,17 +27,10 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block">
-<<<<<<< HEAD
               <img
                 src={logo}
                 alt="Canopi Strategy Partners"
                 className="h-12 md:h-14 max-w-[180px] md:max-w-[220px] object-contain object-left brightness-0 invert"
-=======
-              <img 
-                src={logo} 
-                alt="Canopi Strategy Partners" 
-                className="h-12 md:h-14 max-w-[180px] md:max-w-[220px] object-contain object-left brightness-0 invert" 
->>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
               />
             </Link>
             <p className="text-primary-foreground/75 max-w-md leading-relaxed text-sm">

@@ -8,10 +8,7 @@ import logo from '@/assets/logo-canopi.png';
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-<<<<<<< HEAD
   { name: 'Team', href: '/team' },
-=======
->>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
   { name: 'Approach', href: '/approach' },
   { name: 'Capabilities', href: '/capabilities' },
   { name: 'Healthcare', href: '/industries/healthcare' },
@@ -62,17 +59,10 @@ export function Navbar() {
         <nav className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center">
-<<<<<<< HEAD
             <img
               src={logo}
               alt="Canopi Strategy Partners"
               className="h-16 md:h-20 w-auto brightness-0 invert"
-=======
-            <img 
-              src={logo} 
-              alt="Canopi Strategy Partners" 
-              className="h-16 md:h-20 w-auto brightness-0 invert" 
->>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
             />
           </Link>
 
@@ -96,15 +86,9 @@ export function Navbar() {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center">
-<<<<<<< HEAD
             <Button
               size="sm"
               asChild
-=======
-            <Button 
-              size="sm" 
-              asChild 
->>>>>>> 12f051f3554684a518ae090b82cc3bfbdc2711c0
               className="bg-accent text-accent-foreground hover:bg-gold-light font-medium px-5"
             >
               <Link to="/contact">Get in Touch</Link>
