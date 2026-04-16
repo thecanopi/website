@@ -4,6 +4,7 @@ import pageBg from '@/assets/page-bg-abstract.jpg';
 import drAnupamaImg from '@/assets/Dr Anupama.jpg';
 import drVikramImg from '@/assets/Dr Vikram.jpg';
 import drAvneeshImg from '@/assets/Dr Avneesh khare.jpg';
+import drJaideepImg from '@/assets/dr jaideep.jpg';
 
 export default function TeamPage() {
     return (
@@ -105,6 +106,40 @@ export default function TeamPage() {
                                             </p>
                                             <p>
                                                 <strong className="text-foreground">Areas of interest:</strong> AI in Medicine, AI Literacy for Medical Professionals, Healthcare Leadership
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </RevealOnScroll>
+
+                            {/* Dr. Jaideep Rayapudi */}
+                            <RevealOnScroll delayMs={400}>
+                                <div className="bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+                                    <div className="aspect-square sm:aspect-[4/3] relative overflow-hidden">
+                                        <img
+                                            src={drJaideepImg}
+                                            alt="Dr. Jaideep Rayapudi"
+                                            className="object-contain w-full h-full p-4"
+                                        />
+                                    </div>
+                                    <div className="p-8 flex-1 flex flex-col">
+                                        <h3 className="text-2xl font-serif font-bold text-foreground mb-1">Dr. Jaideep Rayapudi</h3>
+                                        <p className="text-accent font-medium mb-4">Independent Clinical AI Consultant</p>
+                                        <div className="text-muted-foreground text-sm leading-relaxed flex-1 space-y-4">
+                                            <p>
+                                                Medical Doctor, Physiologist, and Digital Health Strategist with 30 years at the intersection of clinical medicine, medical education, and healthcare technology.
+                                            </p>
+                                            <p>
+                                                Consultant and Advisor, Digital Health &amp; Clinical AI, India | Guest Faculty, AI in Healthcare, Jio Institute | Trainer, AdiRa DataLeads, India
+                                            </p>
+                                            <p>
+                                                <strong className="text-foreground">Academic Qualifications:</strong> MBBS, MD Physiology — Christian Medical College, Ludhiana | Basic Course in Medical Education Technology, SRMC Chennai | Leadership Development, Haggai Institute | Certifications in AI &amp; Digital Health
+                                            </p>
+                                            <p>
+                                                <strong className="text-foreground">Honours and Recognition:</strong> Organised India's first Digital Health Workshop for Healthcare Professionals (2011) | Invited Speaker, 'Role of Human Intelligence in the Age of AI', Edinburgh | Pioneered digital health infrastructure at multiple Indian medical institutions from 1998 onwards
+                                            </p>
+                                            <p>
+                                                <strong className="text-foreground">Areas of Interest:</strong> Clinical AI Solutioning, AI Literacy for Healthcare Professionals, Medical Education Strategy, Digital Health Transformation
                                             </p>
                                         </div>
                                     </div>
